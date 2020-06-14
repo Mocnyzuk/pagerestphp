@@ -1,0 +1,17 @@
+zabiegTRYCHOLOGICZNY-APARATUROWY
+INFUZJA TLENOWA
+170
+150
+<p><br /><strong>Opis zabiegu:</strong><br />Innowacyjny zabieg polegający na wprowadzeniu do skóry substancji aktywnych za pomocą sprzężonego tlenu, który ułatwia efektywne przenikanie ich do skóry. Ponadto, sam tlen podany na skórę głowy wykazuje pozytywne rezultaty w postaci zwiększenia krążenia oraz dotlenienia, a także wspomaga gojenia się stanów zapalnych.</p>
+<p><br /><strong>Czas trwania zabiegu:</strong> 60- 90 min</p>
+<p><strong>Ilość zabiegów:</strong> dobierana indywidualnie, najczęściej w serii 4 zabiegów co 7 dni oraz w celu kontynuacji kuracji- 1 zabieg raz w miesiącu przez 4 miesiące</p>
+<p><strong>Wskazania do zabiegu:</strong></p>
+<ul>
+<li>wypadanie włosów</li>
+<li>łysienie</li>
+<li>łojotok</li>
+<li>łojotokowe zapalenie skóry głowy</li>
+<li>atopowe zapalenie skóry głowy</li>
+<li>łuszczyca skóry głowy</li>
+<li>sucha i wrażliwa skóra głowy</li>
+</ul>

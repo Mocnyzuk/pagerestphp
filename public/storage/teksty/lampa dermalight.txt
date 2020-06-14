@@ -1,0 +1,31 @@
+zabiegTRYCHOLOGICZNY-APARATUROWY
+LAMPA DERMALIGHT
+40
+30
+<p><strong>Opis zabiegu:</strong></p>
+<p>Lampa Dermalight 80 ma postać grzebienia, emitującego promienie UV, które umożliwiają wykonanie szerokiego zakresu działań terapeutycznych. Konstrukcja grzebieniowa pozwala na właściwe dotarcie do skóry rozdzielając pasma włosów. Zabieg jest krótki i bezbolesny.</p>
+<p><strong>Czas trwania zabiegu:</strong> dobierany indywidualnie, najczęściej do 20 min</p>
+<p><strong>Ilość zabiegów:</strong> dobierana indywidualnie do potrzeb oraz nasilenia schorzenia skóry głowy, 4-6 tygodni codziennie lub co 2 dni</p>
+<p><strong>Wskazania do zabiegu:</strong></p>
+<ul>
+<li>łuszczyca</li>
+<li>łojotokowe zapalenie skóry głowy</li>
+<li>wypadanie włosów</li>
+<li>atopowe zapalenie skóry głowy</li>
+</ul>
+<p><strong>Efekty zabiegu:</strong></p>
+<ul>
+<li>poprawa ukrwienia</li>
+<li>odżywienie i dotlenienie</li>
+<li>oczyszcza miejsca zmienione chorobowo z łuski łuszczycowej </li>
+<li>ogranicza wypadanie włosów</li>
+<li>wspomaga prawidłowy wzrost włosów</li>
+</ul>
+<p><strong>Przeciwwskazania:</strong></p>
+<ul>
+<li>ciąża oraz karmienie&nbsp;piersią</li>
+<li>nadczynność tarczycy</li>
+<li>choroby nowotworowe w tym nowotwory skóry</li>
+<li>gruźlica</li>
+<li>przerwanie ciągłości naskórka</li>
+</ul>

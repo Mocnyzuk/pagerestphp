@@ -1,0 +1,15 @@
+zabiegTRYCHOLOGICZNY
+Zabieg odbudowy struktury włosa
+150
+120
+<p><strong>Etapy:</strong></p>
+<ul>
+<li>OCZYSZCZANIE: hydrabrazja</li>
+<li>UMYCIE SZAMPONEM REGENERUJĄCYM</li>
+<li>MASAŻ SKÓRY GŁOWY</li>
+<li>AMPUŁKA</li>
+<li>MASKA KREMOWA + SAUNA</li>
+<li>MUS PROTEINOWY</li>
+<li>WYSUSZENIE WŁOSÓW</li>
+</ul>
+<p><strong>Czas trwania zabiegu:</strong> 90 min</p>

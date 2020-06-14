@@ -1,0 +1,13 @@
+zabiegTRYCHOLOGICZNY
+Zabieg łagodzący zamiany łuszczycowe
+150
+120
+<p><strong>Etapy:</strong></p>
+<ul>
+<li>OCZYSZCZANIE: hydrabrazja</li>
+<li>UMYCIE SZAMPONEM KOJĄCYM</li>
+<li>SERUM KOJĄCE</li>
+<li>WYSUSZENIE WŁOSÓW</li>
+<li>TERAPIA DERMALIGHT</li>
+</ul>
+<p><strong>Czas trwania zabiegu:</strong> 60 min</p>

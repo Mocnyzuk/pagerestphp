@@ -1,0 +1,15 @@
+zabiegTRYCHOLOGICZNY
+Zabieg nawilżający
+150
+120
+<p><strong>Etapy:</strong></p>
+<ul>
+<li>OCZYSZCZANIE: hydrabrazja</li>
+<li>UMYCIE SZAMPONEM NAWILŻAJĄCYM</li>
+<li>WTŁOCZENIE SUBSTANCJI AKTYWNYCH: infuzja tlenowa/mezoterapia+ AMPUŁKA </li>
+<li>MASAŻ SKÓRY GŁOWY</li>
+<li>MASKA KREMOWA + SAUNA</li>
+<li>WYSUSZENIE WŁOSÓW</li>
+<li>NAŚWIETLANIE LASEREM HAIRMAX</li>
+</ul>
+<p><strong>Czas trwania zabiegu:</strong> 90 min</p>

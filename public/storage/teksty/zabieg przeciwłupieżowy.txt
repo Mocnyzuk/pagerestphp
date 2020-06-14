@@ -1,0 +1,14 @@
+zabiegTRYCHOLOGICZNY
+Zabieg przeciwłupieżowy
+150
+120
+<p><strong>Etapy:</strong></p>
+<ul>
+<li>OCZYSZCZANIE: hydrabrazja/peeling trychologiczny</li>
+<li>UMYCIE SZAMPONEM PRZECIWŁUPIEŻOWYM</li>
+<li>MASKA OCZYSZCZAJĄCA Z GLINKĄ</li>
+<li>SERUM OCZYSZCZAJĄCO- NORMALIZUJĄCE</li>
+<li>WYSUSZENIE WŁOSÓW</li>
+<li>NAŚWIETLANIE LASEREM HAIRMAX/DARSONWALIZACJA</li>
+</ul>
+<p><strong>Czas trwania zabiegu:</strong> 90 min</p>

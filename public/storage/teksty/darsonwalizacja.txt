@@ -1,0 +1,43 @@
+zabiegTRYCHOLOGICZNY-APARATUROWY
+DARSONWALIZACJA
+40
+30
+<p><strong>Opis zabiegu:</strong><br />W zabiegu wykorzystuje się prądy wysokiej częstotliwości, które powodują wytworzenie ciepła. W obrębie tkanek poddawanych zabiegowi naczynia krwionośne ulegają rozszerzeniu, zwiększa się ukrwienie oraz odżywienie mieszków włosowych. Efektem tego jest hamowanie wypadania włosów oraz stymulacja odrostu nowych włosów. Ponadto, podczas kontaktu peloty (elektrody urządzenia) ze skórą wytwarzany jest ozon, który ma silne działanie antybakteryjne i dezynfekujące. Zabieg polecany jest osobom z łupieżem, łojotokiem oraz pojawiającymi się stanami zapalnymi skóry głowy.</p>
+<p><strong>Czas trwania zabiegu:</strong> 20-30 minut</p>
+<p><strong>Ilość zabiegów:</strong> w serii 10-15 zabiegów 2-3 razy w tygodniu</p>
+<p><strong>Wskazania:</strong></p>
+<ul>
+<li>łojotok</li>
+<li>łojotokowe zapalenie skóry głowy</li>
+<li>wypadanie włosów</li>
+<li>łupież skóry głowy</li>
+<li>łuszczyca skóry głowy</li>
+<li>sucha skóra głowy</li>
+</ul>
+<p><strong>Efekty zabiegu:</strong></p>
+<ul>
+<li>oczyszczenie skóry głowy</li>
+<li>zwiększenie ukrwienie</li>
+<li>zmniejszenie łojotoku</li>
+<li>ograniczenie świądu</li>
+<li>zmniejszenie wypadania włosów</li>
+<li>pobudzenie włosów do odrostu</li>
+<li>odżywienie mieszków włosowych</li>
+<li>efektywniejsze wchłanianie preparatów trychologicznych</li>
+</ul>
+<p><strong>Przeciwwskazania:</strong></p>
+<ul>
+<li>ciąża oraz karmienie&nbsp;piersią</li>
+<li>stany zapalne i alergiczne skóry</li>
+<li>zaburzenia krążenia</li>
+<li>choroby serca</li>
+<li>zastawki oraz rozrusznik serca</li>
+<li>choroby nowotworowe</li>
+<li>przerwanie ciągłości skóry</li>
+<li>gorączka</li>
+<li>nadciśnienie</li>
+<li>skłonność do teleangiektazji</li>
+<li>astma</li>
+<li>choroby układu nerwowego</li>
+<li>padaczka</li>
+</ul>
