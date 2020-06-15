@@ -4,8 +4,12 @@
 namespace App\Controller;
 
 
+use App\Entity\User;
 use App\Service\LoginService;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class LoginController extends AbstractController
 {
@@ -28,7 +32,15 @@ class LoginController extends AbstractController
     public function logout(){
 
     }
-    public function register(){
-
+    public function register(UserPasswordEncoderInterface $passwordEncoder, Request $request){
+        $user = new User();
+        $email                  = $request->request->get("odp");
+        $password               = $request->request->get("password");
+        $passwordConfirmation   = $request->request->get("repassword");
+        return $this->json([
+            'email' => $email,
+            'password' => $password,
+            'password_confirmation' => $passwordConfirmation
+        ]);
     }
 }
