@@ -34,10 +34,6 @@ class OpenHours
      */
     private $close;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Kontakt::class, mappedBy="openHours")
-     */
-    private $kontakts;
 
     public function __construct()
     {
@@ -85,31 +81,4 @@ class OpenHours
         return $this;
     }
 
-    /**
-     * @return Collection|Kontakt[]
-     */
-    public function getKontakts(): Collection
-    {
-        return $this->kontakts;
-    }
-
-    public function addKontakt(Kontakt $kontakt): self
-    {
-        if (!$this->kontakts->contains($kontakt)) {
-            $this->kontakts[] = $kontakt;
-            $kontakt->addOpenHour($this);
-        }
-
-        return $this;
-    }
-
-    public function removeKontakt(Kontakt $kontakt): self
-    {
-        if ($this->kontakts->contains($kontakt)) {
-            $this->kontakts->removeElement($kontakt);
-            $kontakt->removeOpenHour($this);
-        }
-
-        return $this;
-    }
 }

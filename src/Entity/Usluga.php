@@ -39,9 +39,27 @@ class Usluga
 
     /**
      * @ORM\OneToOne(targetEntity=Zabieg::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $zabieg;
+
+    /**
+     * Usluga constructor.
+     * @param $category
+     * @param $name
+     * @param $priceOnce
+     * @param $priceSeries
+     * @param $zabieg
+     */
+    public function __construct($category, $name, $priceOnce, $priceSeries, $zabieg)
+    {
+        $this->category = $category;
+        $this->name = $name;
+        $this->priceOnce = $priceOnce;
+        $this->priceSeries = $priceSeries;
+        $this->zabieg = $zabieg;
+    }
+
 
     public function getId(): ?int
     {

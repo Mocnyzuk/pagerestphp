@@ -50,7 +50,7 @@ class Kontakt
     private $city;
 
     /**
-     * @ORM\ManyToMany(targetEntity=OpenHours::class, inversedBy="kontakts")
+     * @ORM\ManyToMany(targetEntity=OpenHours::class)
      */
     private $openHours;
 

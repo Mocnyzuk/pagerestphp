@@ -33,7 +33,7 @@ class Problem
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Image::class, cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $image;

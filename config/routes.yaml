@@ -1,6 +1,66 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-homepage:
-  path: /
+root:
+  path: /api
   controller: App\Controller\RootController::home
+  methods:    GET|HEAD
+rootDB:
+  path: /api/insertDB
+  controller: App\Controller\RootController::initDB
+  methods:    GET|HEAD
+homepage:
+  path: /api/home
+  controller: App\Controller\HomeController::home
+  methods:    GET|HEAD
+cennik:
+  path: /api/cennik
+  controller: App\Controller\OtherController::cennik
+  methods:    GET|HEAD
+kontakt:
+  path: /api/kontakt
+  controller: App\Controller\OtherController::kontakt
+  methods:    GET|HEAD
+preparaty:
+  path: /api/preparatytrychologiczne
+  controller: App\Controller\OtherController::preparaty
+  methods:    GET|HEAD
+omnie:
+  path: /api/omnie
+  controller: App\Controller\OtherController::omnie
+  methods:    GET|HEAD
+problem:
+  path: /api/problem/{name}
+  controller: App\Controller\ProblemController::show
+  methods:    GET|HEAD
+zabiegList:
+  path: /api/zabieg
+  controller: App\Controller\ZabiegController::showAllCategories
+  methods:    GET|HEAD
+zabiegByCat:
+  path: /api/zabieg/{category}
+  controller: App\Controller\ZabiegController::showByCategory
+  methods:    GET|HEAD
+zabiegByName:
+  path: /api/zabieg/{category}/{name}
+  controller: App\Controller\ZabiegController::showByName
+  methods:    GET|HEAD
+api_login_check:
+  path: /api/login_check
+logout:
+  path: /api/logout
+  controller: App\Controller\LoginController::logout
+register:
+  path: /api/register
+  controller: App\Controller\LoginController::register
+user:
+  path: /api/user
+  controller: App\Controller\LoginController::user
+file:
+  path: /files/{dirname}/{filename}
+  controller: App\Controller\StorageController::getFile
+  methods:    GET|HEAD
+postfile:
+  path: /files/uploadfile/{dirname}
+  controller: App\Controller\StorageController::postFile
+  methods:    POST

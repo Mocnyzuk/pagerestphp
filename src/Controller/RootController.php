@@ -4,30 +4,63 @@
 namespace App\Controller;
 
 
+use App\Entity\User;
 use App\Migrations\FileReader;
+use App\Service\HomeAndRootService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class RootController extends AbstractController
 {
-    public function home(){
+    public function initDB(){
         $object = new FileReader();
-        $imageArray = $object->getImages();
+        $array = $object->getDataForDB();
+        $imageArray = $array["images"];
         $em = $this->getDoctrine()->getManager();
-//        for ($i = 0; $i<sizeof($imageArray); $i++){
-//            $em->persist($imageArray[$i]);
-//        }
-        //$em->flush();
-
-
-        $problemArray = $object->getProblems($imageArray);
-
+        for ($i = 0; $i<sizeof($imageArray); $i++){
+            $em->persist($imageArray[$i]);
+        }
+        $problemArray = $array["problems"];
+        $zabiegArray = $array["zabiegs"];
+        $uslugArray = $array["uslugs"];
+        $openHours = $array["openHours"];
+        for ($i = 0; $i<sizeof($openHours); $i++){
+            $em->persist($openHours[$i]);
+        }
+        $kontakt = $array["kontakt"];
+        $em->persist($kontakt);
+        $slideshow = $array["slideshow"];
+        $em->persist($slideshow);
+        $navbarHref = $array["navBarHref"];
+        for ($i = 0; $i<sizeof($navbarHref); $i++){
+            $em->persist($navbarHref[$i]);
+        }
         for ($i = 0; $i<sizeof($problemArray); $i++){
             $em->persist($problemArray[$i]);
         }
+        for ($i = 0; $i<sizeof($zabiegArray); $i++){
+            $em->persist($zabiegArray[$i]);
+        }
+        for ($i = 0; $i<sizeof($uslugArray); $i++){
+            $em->persist($uslugArray[$i]);
+        }
+        $prozas = $array["prozas"];
+        for ($i = 0; $i<sizeof($prozas); $i++){
+            $em->persist($prozas[$i]);
+        }
+        $authorities = $array["authority"];
+        for ($i = 0; $i<sizeof($authorities); $i++){
+            $em->persist($authorities[$i]);
+        }
+        $users = $array["users"];
+        for ($i = 0; $i<sizeof($users); $i++){
+            $em->persist($users[$i]);
+        }
         $em->flush();
-        echo "jestem";
-        return new Response(sizeof($problemArray));
+        return $this->json($this->getDoctrine()->getRepository(User::class)->findOneBy(["username"=>"fpmoles@fpmoles.pl"]));
+    }
+    public function home(HomeAndRootService $service){
+        return $this->json($service->getRootPage());
     }
 }
