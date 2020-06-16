@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Service\StorageService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class StorageController extends AbstractController
+class StorageController extends AbstractController implements ApiController
 {
     private $storageService;
 

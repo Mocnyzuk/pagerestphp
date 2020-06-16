@@ -18,7 +18,15 @@ security:
             anonymous: true
             lazy: true
             provider: app_user_provider
-
+            guard:
+                authenticators:
+                    - App\Security\ApiAuthenticator
+                    - App\Security\JWTAuthenticator
+                entry_point: App\Security\ApiAuthenticator
+            logout:
+                path: logout
+                #success_handler: App\Security\JwtLogoutHandler
+            stateless: true
 
 
             # activate different ways to authenticate

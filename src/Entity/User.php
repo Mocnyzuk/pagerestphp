@@ -3,8 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -15,24 +18,32 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("api")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups("api")
      */
     private $email;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\ManyToMany(targetEntity=Authority::class)
+     * @Groups("api")
      */
-    private $roles = [];
+    private $roles;
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
+
+    public function __construct()
+    {
+        $this->roles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -47,6 +58,31 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+    /**
+     * @return Collection|Authority[]
+     */
+    public function getAuthorities(): Collection
+    {
+        return $this->roles;
+    }
+
+    public function addAuthority(Authority $auth): self
+    {
+        if (!$this->roles->contains($auth)) {
+            $this->roles->add($auth);
+        }
+
+        return $this;
+    }
+
+    public function removeAuthority(Authority $auth): self
+    {
+        if ($this->roles->contains($auth)) {
+            $this->roles->removeElement($auth);
+        }
 
         return $this;
     }
@@ -66,11 +102,19 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        $roles = $this->getAuthorities();
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $base = new Authority();
+        $base->setUsername($this->getUsername());
+        $base->setAuthority('ROLE_USER');
+        $this->addAuthority($base);
+        $strings = array();
+        for($i=0;$i<sizeof($roles);$i++){
+            $obj = $roles[$i];
+            $strings[] = $obj->getAuthority();
+        }
 
-        return array_unique($roles);
+        return array_unique($strings);
     }
 
     public function setRoles(array $roles): self

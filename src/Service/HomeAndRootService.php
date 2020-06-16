@@ -26,18 +26,23 @@ class HomeAndRootService
             "phone"=>$kontakt->getPhone()];
         $navBar = $this->repoService->getNavBarHrefRepo()->findAll();
         $problemLights = $this->getProblemLight();
-        $zabiegMap = $this->getMapByCategoryZabiegOrUslugs($this->repoService->getZabiegRepo()->findAll());
+        $zabiegMap = $this->getMapByCategoryZabiegOrUslugs($this->repoService->getZabiegRepo()->findAll(), true);
         return ["logo"=>$logo,
             "kontakt"=>$kontaktDTO,
-            "navBarHref"=>$navBar,
+            "menuNavBar"=>$navBar,
             "problems"=>$problemLights,
             "trychologyMenu"=>$zabiegMap];
     }
     public function getHomePage() :array{
         $banner = $this->getBanner();
-        $prozasInString = $this->repoService->getProzaRepo()->findOneBy(["name"=>"proza 1"]);
+        $prozasInString = $this->repoService->getProzaRepo()->findOneBy(["name"=>"proza 1"])->getTresc();
         $slideshow = $this->repoService->getSlideshowRepo()->findAll()[0];
-        $slideshowLight = ["imageSrc"=>$slideshow->getImages(),
+        $imageArray = $slideshow->getImages();
+        $onlySrc = array();
+        for($i=0; $i<sizeof($imageArray);$i++){
+            $onlySrc[] = $imageArray[$i]->getPath();
+        }
+        $slideshowLight = ["imageSrc"=>$onlySrc,
             "opis"=>$slideshow->getDescription()];
         return ["banner"=>$banner,
             "problems"=>$this->getProblemLight(),
@@ -55,7 +60,7 @@ class HomeAndRootService
         }
         return $problemLights;
     }
-    public function getMapByCategoryZabiegOrUslugs($array): array{
+    public function getMapByCategoryZabiegOrUslugs($array, bool $short = false): array{
         $zabiegs = $array;
         $zabiegTrych = array();
         $zabiegApar = array();
@@ -63,11 +68,27 @@ class HomeAndRootService
         for ($i = 0; $i<sizeof($zabiegs);$i++){
             $zab = $zabiegs[$i];
             if($zab->getCategory() === "trychologiczny"){
-                $zabiegTrych[] = $zab;
+                if($short){
+                    $zabiegTrych[] = ["urlPath" => $zab->getUrlPath(),
+                        "name" => $zab->getName()];
+                }else{
+                    $zabiegTrych[] = $zab;
+                }
+
             }elseif($zab->getCategory() === "trychologiczny-aparaturowy"){
-                $zabiegApar[] = $zab;
+                if($short){
+                    $zabiegApar[] = ["urlPath" => $zab->getUrlPath(),
+                        "name" => $zab->getName()];
+                }else{
+                    $zabiegApar[] = $zab;
+                }
             }else{
-                $zabiegInny[] = $zab;
+                if($short){
+                    $zabiegInny[] = ["urlPath" => $zab->getUrlPath(),
+                        "name" => $zab->getName()];
+                }else{
+                    $zabiegInny[] = $zab;
+                }
             }
         }
         return ["Trychologiczny"=>$zabiegTrych,
@@ -78,9 +99,9 @@ class HomeAndRootService
         $image = $this->repoService->getImageRepo()->findOneBy(["name"=>"pierwsza strona"]);
         $tresc = $this->repoService->getProzaRepo()->findOneBy(["name"=>"cytat"]);
         $banner = array();
-        $banner[] = $image->getName();
-        $banner[] = $image->getPath();
-        $banner[] = $tresc->getTresc();
+        $banner["name"] = $image->getName();
+        $banner["path"] = $image->getPath();
+        $banner["quote"] = $tresc->getTresc();
         return $banner;
     }
 

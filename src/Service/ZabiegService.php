@@ -30,7 +30,7 @@ class ZabiegService
             ->where("z.urlPath LIKE :name")
             ->setParameter("name", "%".$name."%")
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
     }
 
 }

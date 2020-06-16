@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Service\ZabiegService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ZabiegController extends AbstractController
+class ZabiegController extends AbstractController implements ApiController
 {
     private $zabiegService;
 
@@ -26,7 +26,7 @@ class ZabiegController extends AbstractController
         return $this->json($this->zabiegService->getByCategory($category));
     }
     public function showByName(string $category, string $name){
-        return $this->json($this->zabiegService->getZabiegByName($name));
+        return $this->json(["zabieg" => $this->zabiegService->getZabiegByName($name)]);
     }
 
 

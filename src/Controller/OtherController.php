@@ -6,8 +6,9 @@ namespace App\Controller;
 
 use App\Service\OtherService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
-class OtherController extends AbstractController
+class OtherController extends AbstractController implements ApiController
 {
 
     private $otherService;
@@ -32,6 +33,9 @@ class OtherController extends AbstractController
     }
     public function omnie(){
         return $this->json($this->otherService->getOmnie());
+    }
+    public function trichoskopia(){
+        return new Response($this->otherService->getTrichoskopia());
     }
 
 }

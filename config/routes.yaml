@@ -1,12 +1,17 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+index:
+  path: /
+  controller: App\Controller\RootController::index
+  methods:    GET|HEAD
 root:
   path: /api
   controller: App\Controller\RootController::home
   methods:    GET|HEAD
 rootDB:
-  path: /api/insertDB
+  path: /insertDB
   controller: App\Controller\RootController::initDB
   methods:    GET|HEAD
 homepage:
@@ -29,6 +34,10 @@ omnie:
   path: /api/omnie
   controller: App\Controller\OtherController::omnie
   methods:    GET|HEAD
+trichoskopia:
+  path: /api/trichoskopia
+  controller: App\Controller\OtherController::trichoskopia
+  methods:    GET|HEAD
 problem:
   path: /api/problem/{name}
   controller: App\Controller\ProblemController::show
@@ -45,11 +54,11 @@ zabiegByName:
   path: /api/zabieg/{category}/{name}
   controller: App\Controller\ZabiegController::showByName
   methods:    GET|HEAD
-api_login_check:
-  path: /api/login_check
+api_login:
+  path: /api/login
+  controller: App\Controller\LoginController::login
 logout:
   path: /api/logout
-  controller: App\Controller\LoginController::logout
 register:
   path: /api/register
   controller: App\Controller\LoginController::register

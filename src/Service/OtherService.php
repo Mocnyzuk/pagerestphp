@@ -26,8 +26,8 @@ class OtherService
     }
 
     public function getCennikPage() : array{
-        return $this->homeAndRootService->
-        getMapByCategoryZabiegOrUslugs($this->repoService->getUslugaRepo()->findAll());
+        return ["cennik" => $this->homeAndRootService->
+        getMapByCategoryZabiegOrUslugs($this->repoService->getUslugaRepo()->findAll())];
     }
     public function getKontaktPage(){
         return $this->repoService->getKontaktRepo()->findAll()[0];
@@ -46,6 +46,11 @@ class OtherService
             ->getResult();
         return ["pictures"=>$images,
             "description"=>"jeszcze nic nie ma"];
+    }
+
+    public function getTrichoskopia()
+    {
+        return $this->repoService->getProzaRepo()->findOneBy(["name" => "trichoskopia"])->getTresc();
     }
 
 }

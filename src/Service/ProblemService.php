@@ -23,7 +23,7 @@ class ProblemService
             ->where("p.urlPath LIKE :name")
             ->setParameter("name", "%".$name."%")
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
     }
 
 

@@ -55,4 +55,11 @@ class Authority
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->authority;
+    }
+
+
 }

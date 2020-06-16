@@ -152,16 +152,6 @@ class FileReader
         $polskieZnaki = array("ł", "ó", "ą", "ę", "ż", "ź", "ń", "ć", "ś", " ");
         $replacement = array("l", "o", "a", "e", "z", "z", "n", "c", "s", "-");
         $name = str_replace($polskieZnaki, $replacement, $name);
-//        str_replace("ł", "l", $name);
-//        str_replace("ó", "o", $name);
-//        str_replace("ą", "a", $name);
-//        str_replace("ę", "e", $name);
-//        str_replace("ż", "z", $name);
-//        str_replace("ź", "z", $name);
-//        str_replace("ń", "n", $name);
-//        str_replace("ć", "c", $name);
-//        str_replace("ś", "s", $name);
-//        str_replace(" ", "-", $name);
         return $name;
     }
     private function getUslugs($zabiegs) : array{
@@ -231,7 +221,7 @@ class FileReader
     {
         $result = array();
         $names = array("Strona Główna", "O Mnie", "Zabiegi", "Preparaty trychologiczne", "Cennik", "Bon Podarunkowy", "Kontakt");
-        $hrefs = array("/home", "/omnie", "/zabieg", "/preparatytrychologiczne", "/cennik", "/bonpodarunkowy", "/kontakt");
+        $hrefs = array("/", "/omnie", "/zabieg", "/preparatytrychologiczne", "/cennik", "/bonpodarunkowy", "/kontakt");
         for ($i=0;$i<7;$i++){
             $object = new NavBarHref();
             $object->setName($names[$i]);
@@ -314,9 +304,13 @@ class FileReader
         $user2 = new Authority();
         $user2->setUsername("jdoe@jdoe.pl");
         $user2->setAuthority("ROLE_USER");
-        $fpmoles = new User("fpmoles@fpmoles.pl", array($admin, $user));
+        $fpmoles = new User();
+        $fpmoles->setEmail("fpmoles@fpmoles.pl");
+        $fpmoles->setRoles(array($admin, $user));
         $fpmoles->setPassword("$2y$10\$TWUOu.RuZvySpJ9Udr3dAu88Ql23V9y2sBJxdAJHS9jWTZ1TQFnIm");
-        $jdoe = new User("jdoe@jdoe.pl", array($user2));
+        $jdoe = new User();
+        $jdoe->setEmail("jdoe@jdoe.pl");
+        $jdoe->setRoles(array($user2));
         $jdoe->setPassword("$2y$10\$TWUOu.RuZvySpJ9Udr3dAu88Ql23V9y2sBJxdAJHS9jWTZ1TQFnIm");
         $users = array();
         $auth = array();

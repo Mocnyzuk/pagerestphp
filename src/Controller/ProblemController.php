@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Service\ProblemService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ProblemController extends AbstractController
+class ProblemController extends AbstractController implements ApiController
 {
 
     private $problemService;
@@ -22,7 +22,7 @@ class ProblemController extends AbstractController
     }
 
     public function show(string $name){
-        return $this->json($this->problemService->getProblemByName($name));
+        return $this->json(["problem" => $this->problemService->getProblemByName($name)]);
     }
 
 

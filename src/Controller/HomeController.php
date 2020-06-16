@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use App\Service\HomeAndRootService;
 
-class HomeController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController
+class HomeController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController implements ApiController
 {
 
     public function home(HomeAndRootService $service){
