@@ -15,7 +15,7 @@ root:
   controller: App\Controller\RootController::home
   methods:    GET|HEAD
 rootDB:
-  path: /insertDB
+  path: /api/db
   controller: App\Controller\RootController::initDB
   methods:    GET|HEAD
 homepage:

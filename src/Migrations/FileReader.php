@@ -107,7 +107,7 @@ class FileReader
                 $problemName = mb_strtolower(trim($textValue[0]), "UTF-8");
                 if(strcasecmp($zdjecieName, $problemName) == 0){
                     $object = new Problem();
-                    $object->setName($problemName);
+                    $object->setName(ucfirst($problemName));
                     $textValue[0] = "";
                     $object->setDescription(implode($textValue));
                     $object->setImage($zdjecie);

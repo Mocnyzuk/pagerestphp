@@ -9,6 +9,7 @@ use App\Service\LoginService;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -41,7 +42,9 @@ class LoginController extends AbstractController implements ApiController
         ]);
     }
     public function logout(){
-
+        $response = new JsonResponse(['result' => true]);
+        $response->headers->clearCookie("jwt");
+        return $response;
     }
     public function register(ObjectManager $om, UserPasswordEncoderInterface $passwordEncoder, Request $request){
         $user = new User();
