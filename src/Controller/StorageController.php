@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Service\StorageService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class StorageController extends AbstractController implements ApiController
 {
@@ -24,7 +25,7 @@ class StorageController extends AbstractController implements ApiController
     public function getFile(){
 
     }
-    public function postFile(string $dirname, ParamFe){
-    return $this->json($request);
+    public function postFile(string $dirname, Request $request, SluggerInterface $slugger){
+        return $this->json($this->storageService->handlePostFile($dirname, $request, $slugger));
     }
 }
