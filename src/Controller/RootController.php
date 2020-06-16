@@ -58,7 +58,7 @@ class RootController extends AbstractController
             $em->persist($users[$i]);
         }
         $em->flush();
-        return $this->json($this->getDoctrine()->getRepository(User::class)->findOneBy(["email"=>"fpmoles@fpmoles.pl"]));
+        return $this->json($this->getDoctrine()->getRepository(User::class)->findOneBy(["username"=>"fpmoles@fpmoles.pl"]));
     }
     public function home(HomeAndRootService $service){
         return $this->json($service->getRootPage());

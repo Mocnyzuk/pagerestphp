@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Service\OtherService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class OtherController extends AbstractController implements ApiController
@@ -36,6 +37,13 @@ class OtherController extends AbstractController implements ApiController
     }
     public function trichoskopia(){
         return new Response($this->otherService->getTrichoskopia());
+    }
+    public function postMessage(Request $request){
+        $code = 201;
+        if(!$this->otherService->handleMessage($request->getContent())){
+            $code = 400;
+        };
+        return $this->json(null, $code);
     }
 
 }

@@ -50,14 +50,16 @@ class Usluga
      * @param $priceOnce
      * @param $priceSeries
      * @param $zabieg
+     * @param int|null $id
      */
-    public function __construct($category, $name, $priceOnce, $priceSeries, $zabieg)
+    public function __construct($category, $name, $priceOnce, $priceSeries,Zabieg $zabieg = null, $id = null)
     {
         $this->category = $category;
         $this->name = $name;
         $this->priceOnce = $priceOnce;
         $this->priceSeries = $priceSeries;
         $this->zabieg = $zabieg;
+        $this->id = $id;
     }
 
 
@@ -125,4 +127,10 @@ class Usluga
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
 }

@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Service\StorageService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
 class StorageController extends AbstractController implements ApiController
 {
@@ -23,7 +24,7 @@ class StorageController extends AbstractController implements ApiController
     public function getFile(){
 
     }
-    public function postFile(){
-
+    public function postFile(string $dirname, ParamFe){
+    return $this->json($request);
     }
 }

@@ -31,8 +31,9 @@ class Image
      * Image constructor.
      * @param $name
      * @param $path
+     * @param null $id
      */
-    public function __construct($name, $path)
+    public function __construct($name, $path, $id = null)
     {
         $this->name = $name;
         $this->path = $path;

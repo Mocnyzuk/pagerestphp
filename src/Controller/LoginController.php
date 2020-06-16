@@ -26,7 +26,7 @@ class LoginController extends AbstractController implements ApiController
         $this->loginService = $loginService;
     }
     public function login(){
-        return $this->json(['result' => true]);
+        return $this->json(['result' => $this->getUser()]);
     }
     public function refresh(){
 
@@ -45,7 +45,7 @@ class LoginController extends AbstractController implements ApiController
     }
     public function register(ObjectManager $om, UserPasswordEncoderInterface $passwordEncoder, Request $request){
         $user = new User();
-        $email                  = $request->request->get("email");
+        $email                  = $request->request->get("username");
         $password               = $request->request->get("password");
         $passwordConfirmation   = $request->request->get("password_confirmation");
         $errors = [];
@@ -60,7 +60,7 @@ class LoginController extends AbstractController implements ApiController
         if(!$errors)
         {
             $encodedPassword = $passwordEncoder->encodePassword($user, $password);
-            $user->setEmail($email);
+            $user->setUsername($email);
             $user->setPassword($encodedPassword);
             try
             {

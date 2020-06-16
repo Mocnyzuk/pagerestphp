@@ -57,6 +57,32 @@ class Zabieg
      */
     private $image;
 
+    /**
+     * Zabieg constructor.
+     * @param $id
+     * @param $category
+     * @param $urlPath
+     * @param $name
+     * @param $description
+     * @param $priceOnce
+     * @param $priceSeries
+     * @param $duration
+     * @param $image
+     */
+    public function __construct($id = null, $category = null, $urlPath= null, $name= null, $description= null, $priceOnce= null, $priceSeries= null, $duration= null, $image= null)
+    {
+        $this->id = $id;
+        $this->category = $category;
+        $this->urlPath = $urlPath;
+        $this->name = $name;
+        $this->description = $description;
+        $this->priceOnce = $priceOnce;
+        $this->priceSeries = $priceSeries;
+        $this->duration = $duration;
+        $this->image = $image;
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

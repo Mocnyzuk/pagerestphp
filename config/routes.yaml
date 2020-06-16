@@ -26,6 +26,10 @@ kontakt:
   path: /api/kontakt
   controller: App\Controller\OtherController::kontakt
   methods:    GET|HEAD
+sendMessage:
+  path: /api/kontakt
+  controller: App\Controller\OtherController::postMessage
+  methods:    POST
 preparaty:
   path: /api/preparatytrychologiczne
   controller: App\Controller\OtherController::preparaty
@@ -57,6 +61,7 @@ zabiegByName:
 api_login:
   path: /api/login
   controller: App\Controller\LoginController::login
+  methods: POST
 logout:
   path: /api/logout
 register:
@@ -66,11 +71,41 @@ register:
 user:
   path: /api/user
   controller: App\Controller\LoginController::user
+  methods: GET|HEAD
 file:
   path: /files/{dirname}/{filename}
   controller: App\Controller\StorageController::getFile
   methods:    GET|HEAD
+#POST MAPPINGI + ADMINISTRACYJNE PANELE
 postfile:
   path: /files/uploadfile/{dirname}
   controller: App\Controller\StorageController::postFile
   methods:    POST
+admincennik:
+  path: /api/admin/cennik
+  controller: App\Controller\Admin\AdminController::postCennik
+  methods:    POST
+adminkontakt:
+  path: /api/admin/kontakt
+  controller: App\Controller\Admin\AdminController::postKontakt
+  methods:    POST
+adminslideshow:
+  path: /api/admin/slideshow
+  controller: App\Controller\Admin\AdminController::postSlideshow
+  methods:    POST
+adminproblem:
+  path: /api/admin/problem
+  controller: App\Controller\Admin\AdminController::postProblem
+  methods:    POST
+adminproza:
+  path: /api/admin/proza
+  controller: App\Controller\Admin\AdminController::postProza
+  methods:    POST
+adminzabieg:
+  path: /api/admin/zabieg
+  controller: App\Controller\Admin\AdminController::postZabieg
+  methods:    POST
+adminmessages:
+  path: /api/admin/message
+  controller: App\Controller\Admin\AdminController::getMessages
+  methods:    GET|HEAD

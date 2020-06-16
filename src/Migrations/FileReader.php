@@ -25,7 +25,7 @@ class FileReader
 
     public function __construct()
     {
-        $this->PATH = $_SERVER['DOCUMENT_ROOT'] . "\storage";
+        $this->PATH = $_SERVER['DOCUMENT_ROOT'] . "\\files";
     }
 
     public function getDataForDB() : array{
@@ -118,8 +118,7 @@ class FileReader
                 }elseif(strpos($problemName, 'zabieg') !== false){
                     $problemName = str_replace("zabieg", "", $problemName);
                     $type = $problemName;
-                    $problemName = str_replace($type, "", $problemName);
-                    $problemName = iconv('utf-8', 'ascii//TRANSLIT', trim($textValue[1]));
+                    $problemName = trim($textValue[1]);
                     if(strcasecmp($zdjecieName, $problemName) == 0){
                         $priceOnce = floatval($textValue[2]);
                         $priceSeries = floatval($textValue[3]);
@@ -146,7 +145,7 @@ class FileReader
         return ["problems"=>$problems, "zabiegs"=>$zabiegs];
     }
 
-    private function generateUrlPath($zdjecieName):string
+    public static function generateUrlPath($zdjecieName):string
     {
         $name = mb_strtolower($zdjecieName, "UTF-8");
         $polskieZnaki = array("ł", "ó", "ą", "ę", "ż", "ź", "ń", "ć", "ś", " ");
@@ -305,11 +304,11 @@ class FileReader
         $user2->setUsername("jdoe@jdoe.pl");
         $user2->setAuthority("ROLE_USER");
         $fpmoles = new User();
-        $fpmoles->setEmail("fpmoles@fpmoles.pl");
+        $fpmoles->setUsername("fpmoles@fpmoles.pl");
         $fpmoles->setRoles(array($admin, $user));
         $fpmoles->setPassword("$2y$10\$TWUOu.RuZvySpJ9Udr3dAu88Ql23V9y2sBJxdAJHS9jWTZ1TQFnIm");
         $jdoe = new User();
-        $jdoe->setEmail("jdoe@jdoe.pl");
+        $jdoe->setUsername("jdoe@jdoe.pl");
         $jdoe->setRoles(array($user2));
         $jdoe->setPassword("$2y$10\$TWUOu.RuZvySpJ9Udr3dAu88Ql23V9y2sBJxdAJHS9jWTZ1TQFnIm");
         $users = array();

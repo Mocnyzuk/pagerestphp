@@ -26,7 +26,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups("api")
      */
-    private $email;
+    private $username;
 
     /**
      * @ORM\ManyToMany(targetEntity=Authority::class)
@@ -52,12 +52,12 @@ class User implements UserInterface
 
     public function getEmail(): ?string
     {
-        return $this->email;
+        return $this->username;
     }
 
-    public function setEmail(string $email): self
+    public function setUsername(string $username): self
     {
-        $this->email = $email;
+        $this->username = $username;
 
         return $this;
     }
@@ -94,7 +94,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**

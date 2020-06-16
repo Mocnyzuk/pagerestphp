@@ -74,4 +74,7 @@ class RepoService
     public function getZabiegRepo(){
         return $this->em->getRepository(Zabieg::class);
     }
+    public function getEntityManager(){
+        return $this->em;
+    }
 }

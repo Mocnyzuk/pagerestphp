@@ -28,10 +28,10 @@ class JWTAuthenticator extends AbstractGuardAuthenticator
         $error = "Unable to validate session.";
         try
         {
-            $decodedJwt = JWT::decode($cookie, getenv("JWT_SECRET"), ['HS256']);
+            $decodedJwt = JWT::decode($cookie, "Mys3cr3t", ['HS256']);
             return [
                 'user_id' => $decodedJwt->user_id,
-                'email' => $decodedJwt->email
+                'username' => $decodedJwt->username
             ];
         }
         catch(ExpiredException $e)
@@ -47,6 +47,7 @@ class JWTAuthenticator extends AbstractGuardAuthenticator
         }
         catch(\Exception $e)
         {
+            $error = $e->getMessage();
             // Use the default error message
         }
         throw new CustomUserMessageAuthenticationException($error);
@@ -54,7 +55,7 @@ class JWTAuthenticator extends AbstractGuardAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        return $userProvider->loadUserByUsername($credentials['email']);
+        return $userProvider->loadUserByUsername($credentials['username']);
     }
 
     public function checkCredentials($credentials, UserInterface $user)

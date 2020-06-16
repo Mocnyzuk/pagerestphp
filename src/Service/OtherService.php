@@ -5,8 +5,11 @@ namespace App\Service;
 
 
 use App\Entity\Kontakt;
+use App\Entity\Sender;
 use App\Service\HomeAndRootService;
 use App\Service\RepoService;
+use App\Entity\Message;
+use Exception;
 
 class OtherService
 {
@@ -51,6 +54,35 @@ class OtherService
     public function getTrichoskopia()
     {
         return $this->repoService->getProzaRepo()->findOneBy(["name" => "trichoskopia"])->getTresc();
+    }
+
+    public function handleMessage($json):bool
+    {
+        $em = $this->repoService->getEntityManager();
+        $data = json_decode($json, true);
+        if(!$data["rights"]){
+            return false;
+        }
+        $sender = $this->repoService
+            ->getSenderRepo()
+            ->findOneBy(["email" => $data["email"]]);
+        $message = new Message();
+        if (!$sender) {
+            $new = new Sender();
+            $new->setEmail($data["email"]);
+            $new->setPhone($data["phone"]);
+            $new->setFullName($data["fullName"]);
+            $message->setSender($new);
+            $em->persist($new);
+        } else {
+            $message->setSender($sender);
+        }
+        $message->setMessage($data["message"]);
+        $message->setAnswered(false);
+        $em->persist($message);
+        $em->flush();
+
+    return true;
     }
 
 }

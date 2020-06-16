@@ -33,14 +33,14 @@ class ApiAuthenticator extends AbstractGuardAuthenticator
 
 
         return [
-            'email' => $useraArr["email"],
+            'username' => $useraArr["username"],
             'password' => $useraArr["password"]
         ];
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        return $userProvider->loadUserByUsername($credentials['email']);
+        return $userProvider->loadUserByUsername($credentials['username']);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
@@ -60,15 +60,12 @@ class ApiAuthenticator extends AbstractGuardAuthenticator
         $expireTime = time() + 3600;
         $tokenPayload = [
             'user_id' => $token->getUser()->getId(),
-            'email'   => $token->getUser()->getEmail(),
+            'username'   => $token->getUser()->getUsername(),
             'exp'     => $expireTime
         ];
-        $jwt = JWT::encode($tokenPayload, getenv("JWT_SECRET"));
-        $useHttps = true;
+        $jwt = JWT::encode($tokenPayload, "Mys3cr3t");
+        $useHttps = false;
         setcookie("jwt", $jwt, $expireTime, "/", "", $useHttps, true);
-        return new JsonResponse([
-            'result' => true
-        ]);
     }
 
     public function start(Request $request, AuthenticationException $authException = null)

@@ -9,12 +9,13 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: email
+                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            stateless: true
             anonymous: true
             lazy: true
             provider: app_user_provider
@@ -26,7 +27,6 @@ security:
             logout:
                 path: logout
                 #success_handler: App\Security\JwtLogoutHandler
-            stateless: true
 
 
             # activate different ways to authenticate
