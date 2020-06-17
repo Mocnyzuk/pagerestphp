@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Entity\Image;
+use App\Entity\Problem;
 use App\Entity\Usluga;
 use App\Entity\Zabieg;
 use App\Migrations\FileReader;
@@ -173,6 +174,10 @@ class AdminService
                     $oldImage = $this->repoService->getImageRepo()->find($image["id"]);
                     $old->setImage($oldImage);
                 }
+            }else{
+                if($data["name"]) {
+                    $this->repoService->getEntityManager()->persist(new Zabieg(null, null, null, $data["name"]));
+                }
             }
             $this->repoService->getEntityManager()->flush();
         }catch (Exception $e){
@@ -213,6 +218,12 @@ class AdminService
                 $old->setUrlPath("/problem/".FileReader::generateUrlPath($old->getName()));
                 $old->setImage($this->repoService->getImageRepo()->find($data["image"]["id"]));
                 $this->repoService->getEntityManager()->flush();
+            }else{
+                $problem = new Problem();
+                $problem->setName($data["name"]);
+                if($problem->getName()) {
+                    $this->repoService->getEntityManager()->persist($problem);
+                }
             }
         }catch (Exception $e){
             return false;
