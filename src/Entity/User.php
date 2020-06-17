@@ -29,7 +29,7 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Authority::class)
+     * @ORM\ManyToMany(targetEntity=Authority::class, cascade={"persist"})
      * @Groups("api")
      */
     private $roles;
@@ -66,7 +66,7 @@ class User implements UserInterface
      */
     public function getAuthorities(): Collection
     {
-        return $this->roles;
+        return new ArrayCollection(array_unique($this->roles->getValues()));
     }
 
     public function addAuthority(Authority $auth): self
