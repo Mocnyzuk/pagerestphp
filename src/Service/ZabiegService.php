@@ -20,8 +20,17 @@ class ZabiegService
     public function getAllCategories():array{
         $zabiegs = $this->repoService->getZabiegRepo()->findAll();
 
-        return array_keys($this->repoService->getZabiegRepo()->findAll());
-    }
+        $result = array();
+        foreach ($zabiegs as $usl) {
+            $cat = $usl->getCategory();
+            if ($cat) {
+                $result[] = $cat;
+            }
+        }
+        return array_values(array_unique($result));
+        }
+
+
 
     public function getByCategory(string $category): array
     {
