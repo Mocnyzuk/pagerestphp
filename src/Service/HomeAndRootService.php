@@ -60,7 +60,7 @@ class HomeAndRootService
         }
         return $problemLights;
     }
-    public function getMapByCategoryZabiegOrUslugs($array, bool $short = false): array{
+    public static function getMapByCategoryZabiegOrUslugs($array, bool $short = false): array{
         $zabiegs = $array;
         $zabiegTrych = array();
         $zabiegApar = array();

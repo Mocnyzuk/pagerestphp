@@ -18,16 +18,10 @@ class ZabiegService
     }
 
     public function getAllCategories():array{
-        $zabiegs = $this->repoService->getZabiegRepo()->findAll();
-
-        $result = array();
-        foreach ($zabiegs as $usl) {
-            $cat = $usl->getCategory();
-            if ($cat) {
-                $result[] = $cat;
-            }
-        }
-        return array_values(array_unique($result));
+        $array = HomeAndRootService::getMapByCategoryZabiegOrUslugs($this->repoService->getZabiegRepo()->findAll(), true);
+        return ["Trychologiczny" => $array["Trychologiczny"],
+            "Trychologiczno-aparaturowy" => $array["Trychologiczno-aparaturowy"]];
+        //return array_values(array_unique($result));
         }
 
 
