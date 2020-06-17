@@ -24,7 +24,7 @@ class StorageService
         $this->repoService = $repoService;
     }
 
-    public function handlePostFile(string $dirname, Request $request, SluggerInterface $slugger)
+    public function handlePostFile(string $dirname, Request $request)
     {
         $file = $request->files->all();
         if(!$file){
@@ -34,7 +34,7 @@ class StorageService
             foreach ($file as $f){
                 if ($f instanceof UploadedFile){
                     $originalFilename = pathinfo($f->getClientOriginalName(), PATHINFO_FILENAME);
-                    $safeFilename = $slugger->slug($originalFilename);
+                    $safeFilename = FileReader::generateUrlPath($originalFilename);
                     $newFilename = $safeFilename.'.'.$f->guessExtension();
                     try {
                         $f->move(
