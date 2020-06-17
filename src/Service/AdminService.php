@@ -223,6 +223,7 @@ class AdminService
                 $this->repoService->getEntityManager()->flush();
             }elseif(key_exists("name", $data)){
                 $problem = new Problem();
+                $problem->setUrlPath("/problem/".FileReader::generateUrlPath($problem->getName()));
                 $problem->setName($data["name"]);
                 $this->repoService->getEntityManager()->persist($problem);
 
