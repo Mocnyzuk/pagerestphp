@@ -13,7 +13,8 @@ class ExceptionSubscriber implements EventSubscriberInterface
 {
 
     public function onException(ExceptionEvent $event){
-        $event->setResponse(new RedirectResponse("/"));
+        //$event->setResponse(new RedirectResponse("/"));
+        return;
     }
 
     public static function getSubscribedEvents()

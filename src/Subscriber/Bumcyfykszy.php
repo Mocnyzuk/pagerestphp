@@ -16,8 +16,7 @@ class Bumcyfykszy implements EventSubscriberInterface
     public function checkTheHeader(ControllerEvent $event){
         $controller = $event->getController();
         if(is_array($controller) && $controller[0] instanceof ApiController){
-            //if($event->getRequest()->headers->get("bumcyfykszy") === null){
-            if(false){
+            if($event->getRequest()->headers->get("bumcyfykszy") === null){
                 throw new AccessDeniedHttpException("co to za kombinowanie");
             }
         }
