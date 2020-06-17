@@ -177,6 +177,8 @@ class AdminService
             } elseif (key_exists("name", $data)) {
                 $zabieg = new Zabieg();
                 $zabieg->setName($data["name"]);
+                $zabieg->setCategory($data["category"]);
+                $zabieg->setUrlPath("/zabieg/" . $zabieg->getCategory() . "/" . FileReader::generateUrlPath($zabieg->getName()));
                 $this->repoService->getEntityManager()->persist($zabieg);
             }
             $this->repoService->getEntityManager()->flush();
