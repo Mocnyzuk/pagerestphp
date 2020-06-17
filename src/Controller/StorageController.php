@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class StorageController extends AbstractController implements ApiController
+class StorageController extends AbstractController
 {
     private $storageService;
 
