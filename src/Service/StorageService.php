@@ -38,7 +38,7 @@ class StorageService
                     $newFilename = $safeFilename.'.'.$f->guessExtension();
                     try {
                         $f->move(
-                            $_SERVER['DOCUMENT_ROOT'] . "\\files\\".$dirname,
+                            $_SERVER['DOCUMENT_ROOT'] . "/files/".$dirname,
                             $newFilename
                         );
                         if($dirname === "zdjecia"){
