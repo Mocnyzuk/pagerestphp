@@ -67,7 +67,7 @@ class HomeAndRootService
         $zabiegInny = array();
         for ($i = 0; $i<sizeof($zabiegs);$i++){
             $zab = $zabiegs[$i];
-            if($zab->getCategory() === "trychologiczny"){
+            if($zab->getCategory() === "TRYCHOLOGICZNY"){
                 if($short){
                     $zabiegTrych[] = ["urlPath" => $zab->getUrlPath(),
                         "name" => $zab->getName()];
@@ -75,7 +75,7 @@ class HomeAndRootService
                     $zabiegTrych[] = $zab;
                 }
 
-            }elseif($zab->getCategory() === "trychologiczny-aparaturowy"){
+            }elseif($zab->getCategory() === "TRYCHOLOGICZNY-APARATUROWY"){
                 if($short){
                     $zabiegApar[] = ["urlPath" => $zab->getUrlPath(),
                         "name" => $zab->getName()];

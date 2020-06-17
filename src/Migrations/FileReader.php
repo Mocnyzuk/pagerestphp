@@ -101,11 +101,11 @@ class FileReader
             $zdjeciaSize = sizeof($listOfZdjecia);
             for($j=0; $j<$zdjeciaSize; $j++) {
                 $zdjecie = $listOfZdjecia[$j];
-                $zdjecieName = mb_strtolower(trim($zdjecie->getName()), "UTF-8");
-                $problemName = mb_strtolower(trim($textValue[0]), "UTF-8");
+                $zdjecieName = mb_strtoupper(trim($zdjecie->getName()), "UTF-8");
+                $problemName = mb_strtoupper(trim($textValue[0]), "UTF-8");
                 if(strcasecmp($zdjecieName, $problemName) == 0){
                     $object = new Problem();
-                    $object->setName(ucfirst($problemName));
+                    $object->setName($problemName);
                     $textValue[0] = "";
                     $object->setDescription(implode($textValue));
                     $object->setImage($zdjecie);
@@ -113,10 +113,10 @@ class FileReader
                         "/problem/" . $this->generateUrlPath($problemName));
                     $problems[] =$object;
                     break;
-                }elseif(strpos($problemName, 'zabieg') !== false){
-                    $problemName = str_replace("zabieg", "", $problemName);
+                }elseif(strpos($problemName, 'ZABIEG') !== false){
+                    $problemName = str_replace("ZABIEG", "", $problemName);
                     $type = $problemName;
-                    $problemName = trim($textValue[1]);
+                    $problemName = mb_strtoupper(trim($textValue[1]), "UTF-8");
                     if(strcasecmp($zdjecieName, $problemName) == 0){
                         $priceOnce = floatval($textValue[2]);
                         $priceSeries = floatval($textValue[3]);
@@ -163,13 +163,13 @@ class FileReader
            );
        }
         $uslugs[] = new Usluga("trychologiczny",
-            "Masaż linfatyczny skóry głowy",
+            mb_strtoupper("Masaż linfatyczny skóry głowy", "UTF-8"),
             80.0, 0.0, null);
         $uslugs[] = new Usluga("diagnostyczny",
-            "Wizyta kontrolna",
+            "WIZYTA KONTROLNA",
             60.0, 0.0, null);
         $uslugs[] = new Usluga("diagnostyczny",
-            "Badanie skóry głowy trichoskopem + konsultacja trychologiczna",
+            mb_strtoupper("Badanie skóry głowy trichoskopem + konsultacja trychologiczna", "UTF-8"),
             80.0, 0.0, null);
         return $uslugs;
     }
