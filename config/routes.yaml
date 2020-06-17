@@ -85,6 +85,10 @@ postfile:
   path: /files/uploadfile/{dirname}
   controller: App\Controller\StorageController::postFile
   methods:    POST
+admin:
+  path: /api/admin
+  controller: App\Controller\Admin\AdminController::getAdmin
+  methods:    GET|HEAD
 admincennik:
   path: /api/admin/cennik
   controller: App\Controller\Admin\AdminController::postCennik
