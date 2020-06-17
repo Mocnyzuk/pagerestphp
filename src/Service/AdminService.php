@@ -222,7 +222,7 @@ class AdminService
 
     private function decodeProza($json):bool
     {
-        try{
+
             $data = json_decode($json, true);
             $query = null;
             switch ($data["type"]){
@@ -245,9 +245,6 @@ class AdminService
             $old = $this->repoService->getProzaRepo()->findOneBy(["name" => $query]);
             $old->setTresc($data["value"]);
             $this->repoService->getEntityManager()->flush();
-        }catch (Exception $e){
-            return false;
-        }
         return true;
     }
 
