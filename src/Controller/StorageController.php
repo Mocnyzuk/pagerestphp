@@ -22,9 +22,6 @@ class StorageController extends AbstractController
         $this->storageService = $storageService;
     }
 
-    public function getFile(){
-
-    }
 
     public function postFile(string $dirname, Request $request){
         return $this->json($this->storageService->handlePostFile($dirname, $request));
