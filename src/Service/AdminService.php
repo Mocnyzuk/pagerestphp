@@ -170,7 +170,7 @@ class AdminService
                 $old->setUrlPath("/zabieg/"."/".$old->getCategory()."/".FileReader::generateUrlPath($old->getName()));
                 $image = $data["image"];
                 if($image){
-                    $oldImage = $this->repoService->getKontaktRepo()->find($image["id"]);
+                    $oldImage = $this->repoService->getImageRepo()->find($image["id"]);
                     $old->setImage($oldImage);
                 }
             }
