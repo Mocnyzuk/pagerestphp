@@ -167,7 +167,7 @@ class AdminService
                 $old->setPriceOnce($data["priceOnce"]);
                 $old->setPriceSeries($data["priceSeries"]);
                 $old->setDuration($data["duration"]);
-                $old->setUrlPath("/zabieg/"."/".$old->getCategory()."/".FileReader::generateUrlPath($old->getName()));
+                $old->setUrlPath("/zabieg/".$old->getCategory()."/".FileReader::generateUrlPath($old->getName()));
                 $image = $data["image"];
                 if($image){
                     $oldImage = $this->repoService->getImageRepo()->find($image["id"]);
