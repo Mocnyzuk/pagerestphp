@@ -146,8 +146,8 @@ class FileReader
     public static function generateUrlPath($zdjecieName):string
     {
         $name = mb_strtolower($zdjecieName, "UTF-8");
-        $polskieZnaki = array("ł", "ó", "ą", "ę", "ż", "ź", "ń", "ć", "ś", " ");
-        $replacement = array("l", "o", "a", "e", "z", "z", "n", "c", "s", "-");
+        $polskieZnaki = array("ł", "ó", "ą", "ę", "ż", "ź", "ń", "ć", "ś", " ", "_");
+        $replacement = array("l", "o", "a", "e", "z", "z", "n", "c", "s", "-", "-");
         $name = str_replace($polskieZnaki, $replacement, $name);
         return $name;
     }
