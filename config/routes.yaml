@@ -97,10 +97,18 @@ adminkontakt:
   path: /api/admin/kontakt
   controller: App\Controller\Admin\AdminController::postKontakt
   methods:    POST
+adminkontaktget:
+  path: /api/admin/kontakt
+  controller: App\Controller\Admin\AdminController::getKontakt
+  methods:    GET|HEAD
 adminslideshow:
   path: /api/admin/slideshow
   controller: App\Controller\Admin\AdminController::postSlideshow
   methods:    POST
+adminslideshowget:
+  path: /api/admin/slideshow
+  controller: App\Controller\Admin\AdminController::getSlideshow
+  methods:    GET|HEAD
 adminproblem:
   path: /api/admin/problem
   controller: App\Controller\Admin\AdminController::postProblem
@@ -113,6 +121,10 @@ adminzabieg:
   path: /api/admin/zabieg
   controller: App\Controller\Admin\AdminController::postZabieg
   methods:    POST
+adminzabiegget:
+  path: /api/admin/zabieg
+  controller: App\Controller\Admin\AdminController::getZabieg
+  methods:    GET|HEAD
 adminmessages:
   path: /api/admin/message
   controller: App\Controller\Admin\AdminController::getMessages

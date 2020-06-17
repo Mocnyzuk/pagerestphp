@@ -257,4 +257,37 @@ class AdminService
     {
         return $this->repoService->getImageRepo()->findAll();
     }
+
+    public function getKontakt()
+    {
+        return $this->repoService->getKontaktRepo()->findAll()[0];
+    }
+
+    public function getSlideshow()
+    {
+        $slideshow =  $this->repoService->getSlideshowRepo()->findAll()[0];
+        $slides = array();
+        $imagesFromSlideshow = $slideshow->getImages()->getValues();
+        for ($i = 0; $i<sizeof($imagesFromSlideshow); $i++) {
+            $slides[] =  $imagesFromSlideshow[$i]->getId();
+        }
+        $description = $slideshow->getDescription();
+        $images = $this->repoService->getImageRepo()->findAll();
+        $readyObject = ["description" => $description,
+            "slides" => $slides];
+        return ["slideshow" => $readyObject,
+            "images" => $images];
+    }
+
+    public function getAllZabiegs()
+    {
+        $zabiegs = $this->repoService->getZabiegRepo()->findAll();
+        $listOfDTO = array();
+        for($i = 0; $i<sizeof($zabiegs);$i++){
+            $zab = $zabiegs[$i];
+            $listOfDTO[] = ["urlPath" => $zab->getUrlPath(),
+                "name" => $zab->getName()];
+        }
+        return $listOfDTO;
+    }
 }

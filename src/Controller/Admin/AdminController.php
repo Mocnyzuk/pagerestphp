@@ -8,6 +8,7 @@ use App\Controller\ApiController;
 use App\Service\AdminService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use function Symfony\Component\String\s;
 
 class AdminController extends AbstractController implements ApiController, AdminChecker
 {
@@ -24,6 +25,15 @@ class AdminController extends AbstractController implements ApiController, Admin
 
     public function getAdmin(){
         return $this->json(["images" => $this->adminService->getZdjecia()]);
+    }
+    public function getKontakt(){
+        return $this->json($this->adminService->getKontakt());
+    }
+    public function getSlideshow(){
+        return $this->json($this->adminService->getSlideshow());
+    }
+    public function getZabieg(){
+        return $this->json($this->adminService->getAllZabiegs());
     }
 
     public function postCennik(Request $request){
