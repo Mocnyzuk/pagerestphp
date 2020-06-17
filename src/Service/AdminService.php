@@ -193,15 +193,18 @@ class AdminService
         try {
             $data = json_decode($json, true);
             $old = $this->repoService->getSlideshowRepo()->findAll()[0];
-            $newImages = $this->repoService->getImageRepo()->findBy(["id" => $data["slides"]]);
-            if(!$newImages){
-                return false;
+            if(key_exists("slides", $data)) {
+                $newImages = $this->repoService->getImageRepo()->findBy(["id" => $data["slides"]]);
+                $old->getImages()->clear();
+                foreach ($newImages as $image){
+                    $old->addImage($image);
+                }
             }
-            $old->getImages()->clear();
-            foreach ($newImages as $image){
-                $old->addImage($image);
+            if(key_exists("description", $data)){
+                $old->setDescription($data["description"]);
+            }elseif(key_exists("opis", $data)){
+                $old->setDescription($data["opis"]);
             }
-            $old->setDescription($data["description"]);
             $this->repoService->getEntityManager()->flush();
         }catch (Exception $e){
             return false;
