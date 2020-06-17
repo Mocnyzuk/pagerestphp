@@ -158,26 +158,26 @@ class AdminService
 
     private function decodeZabieg($json):bool
     {
-        try{
+        try {
             $data = json_decode($json, true);
-            $old = $this->repoService->getZabiegRepo()->find($data["id"]);
-            if($old){
+            if (key_exists("id", $data)) {
+                $old = $this->repoService->getZabiegRepo()->find($data["id"]);
                 $old->setCategory($data["category"]);
                 $old->setName(ucfirst($data["name"]));
                 $old->setDescription($data["description"]);
                 $old->setPriceOnce($data["priceOnce"]);
                 $old->setPriceSeries($data["priceSeries"]);
                 $old->setDuration($data["duration"]);
-                $old->setUrlPath("/zabieg/".$old->getCategory()."/".FileReader::generateUrlPath($old->getName()));
+                $old->setUrlPath("/zabieg/" . $old->getCategory() . "/" . FileReader::generateUrlPath($old->getName()));
                 $image = $data["image"];
-                if($image){
+                if ($image) {
                     $oldImage = $this->repoService->getImageRepo()->find($image["id"]);
                     $old->setImage($oldImage);
                 }
-            }else{
-                if($data["name"]) {
-                    $this->repoService->getEntityManager()->persist(new Zabieg(null, null, null, $data["name"]));
-                }
+            } elseif (key_exists("name", $data)) {
+                $zabieg = new Zabieg();
+                $zabieg->setName($data["name"]);
+                $this->repoService->getEntityManager()->persist($zabieg);
             }
             $this->repoService->getEntityManager()->flush();
         }catch (Exception $e){
@@ -211,19 +211,19 @@ class AdminService
     {
         try{
             $data = json_decode($json, true);
-            $old = $this->repoService->getProblemRepo()->find($data["id"]);
-            if($old){
+
+            if (key_exists("id", $data)) {
+                $old = $this->repoService->getProblemRepo()->find($data["id"]);
                 $old->setDescription($data["description"]);
                 $old->setName(ucfirst($data["name"]));
                 $old->setUrlPath("/problem/".FileReader::generateUrlPath($old->getName()));
                 $old->setImage($this->repoService->getImageRepo()->find($data["image"]["id"]));
                 $this->repoService->getEntityManager()->flush();
-            }else{
+            }elseif(key_exists("name", $data)){
                 $problem = new Problem();
                 $problem->setName($data["name"]);
-                if($problem->getName()) {
-                    $this->repoService->getEntityManager()->persist($problem);
-                }
+                $this->repoService->getEntityManager()->persist($problem);
+
             }
         }catch (Exception $e){
             return false;
