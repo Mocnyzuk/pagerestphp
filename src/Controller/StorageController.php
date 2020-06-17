@@ -25,7 +25,8 @@ class StorageController extends AbstractController
     public function getFile(){
 
     }
-    public function postFile(string $dirname, Request $request, SluggerInterface $slugger){
-        return $this->json($this->storageService->handlePostFile($dirname, $request, $slugger));
+
+    public function postFile(string $dirname, Request $request){
+        return $this->json($this->storageService->handlePostFile($dirname, $request));
     }
 }

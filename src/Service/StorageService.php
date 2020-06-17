@@ -28,7 +28,7 @@ class StorageService
     {
         $file = $request->files->all();
         if(!$file){
-            return false;
+            return $file;
         }else{
             $em = $this->repoService->getEntityManager();
             foreach ($file as $f){
