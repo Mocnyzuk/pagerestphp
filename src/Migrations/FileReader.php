@@ -162,14 +162,14 @@ class FileReader
                $zabieg
            );
        }
-        $uslugs[] = new Usluga("Masaż linfatyczny skóry głowy",
-            "TRYCHOLOGICZNY",
+        $uslugs[] = new Usluga("trychologiczny",
+            "Masaż linfatyczny skóry głowy",
             80.0, 0.0, null);
-        $uslugs[] = new Usluga("Wizyta kontrolna",
-            "DIAGNOSTYCZNY",
+        $uslugs[] = new Usluga("diagnostyczny",
+            "Wizyta kontrolna",
             60.0, 0.0, null);
-        $uslugs[] = new Usluga("Badanie skóry głowy trichoskopem + konsultacja trychologiczna",
-            "DIAGNOSTYCZNY",
+        $uslugs[] = new Usluga("diagnostyczny",
+            "Badanie skóry głowy trichoskopem + konsultacja trychologiczna",
             80.0, 0.0, null);
         return $uslugs;
     }
