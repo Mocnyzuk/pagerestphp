@@ -92,7 +92,7 @@ class OtherService
         foreach ($uslugs as $usl){
             $result[] = $usl->getCategory();
         }
-        return array_unique($result);
+        return array_values(array_unique($result));
     }
 
 }
