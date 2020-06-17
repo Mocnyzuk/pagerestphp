@@ -85,4 +85,14 @@ class OtherService
     return true;
     }
 
+    public function getUslugsCategories():array
+    {
+        $uslugs = $this->repoService->getUslugaRepo()->findAll();
+        $result = array();
+        foreach ($uslugs as $usl){
+            $result[] = $usl->getCategory();
+        }
+        return array_unique($result);
+    }
+
 }

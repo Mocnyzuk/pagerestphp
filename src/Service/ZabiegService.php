@@ -18,6 +18,8 @@ class ZabiegService
     }
 
     public function getAllCategories():array{
+        $zabiegs = $this->repoService->getZabiegRepo()->findAll();
+
         return array_keys($this->repoService->getZabiegRepo()->findAll());
     }
 

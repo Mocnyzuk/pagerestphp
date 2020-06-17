@@ -23,6 +23,9 @@ class OtherController extends AbstractController implements ApiController
         $this->otherService = $otherService;
     }
 
+    public function getCategories(){
+        return $this->json($this->otherService->getUslugsCategories());
+    }
     public function cennik(){
         return $this->json($this->otherService->getCennikPage());
     }

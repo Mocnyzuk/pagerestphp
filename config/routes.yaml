@@ -26,6 +26,10 @@ cennik:
   path: /api/cennik
   controller: App\Controller\OtherController::cennik
   methods:    GET|HEAD
+cennikCat:
+  path: /api/cennik/categories
+  controller: App\Controller\OtherController::getCategories
+  methods:    GET|HEAD
 kontakt:
   path: /api/kontakt
   controller: App\Controller\OtherController::kontakt
