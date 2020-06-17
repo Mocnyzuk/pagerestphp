@@ -252,4 +252,9 @@ class AdminService
     {
         return $this->repoService->getMessageRepo()->findAll();
     }
+
+    public function getZdjecia(): array
+    {
+        return $this->repoService->getImageRepo()->findAll();
+    }
 }

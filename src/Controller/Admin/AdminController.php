@@ -22,6 +22,9 @@ class AdminController extends AbstractController implements ApiController, Admin
         $this->adminService = $adminService;
     }
 
+    public function getAdmin(){
+        return $this->json($this->adminService->getZdjecia());
+    }
 
     public function postCennik(Request $request){
         return $this->json(null, $this->adminService->handlePostCennik($request));
