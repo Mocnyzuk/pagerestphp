@@ -101,9 +101,7 @@ class FileReader
             $zdjeciaSize = sizeof($listOfZdjecia);
             for($j=0; $j<$zdjeciaSize; $j++) {
                 $zdjecie = $listOfZdjecia[$j];
-                //$zdjecieName = iconv('utf-8', 'ascii//TRANSLIT', trim($zdjecie->getName()));
                 $zdjecieName = mb_strtolower(trim($zdjecie->getName()), "UTF-8");
-                //$problemName = iconv('utf-8', 'ascii//TRANSLIT', trim($textValue[0]));
                 $problemName = mb_strtolower(trim($textValue[0]), "UTF-8");
                 if(strcasecmp($zdjecieName, $problemName) == 0){
                     $object = new Problem();
