@@ -26,7 +26,14 @@ class ZabiegController extends AbstractController implements ApiController
         return $this->json($this->zabiegService->getByCategory($category));
     }
     public function showByName(string $category, string $name){
-        return $this->json(["zabieg" => $this->zabiegService->getZabiegByName($name)]);
+        $zabieg = $this->zabiegService->getZabiegByName($name);
+        $body = null;
+        $webCode = 404;
+        if($zabieg){
+            $body = ["zabieg" => $zabieg];
+            $webCode = 200;
+        }
+        return $this->json($body, $webCode);
     }
 
 

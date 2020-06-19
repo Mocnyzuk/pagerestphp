@@ -23,7 +23,14 @@ class ProblemController extends AbstractController implements ApiController
 
     public function show(string $name){
         $problem = $this->problemService->getProblemByName($name);
-        return $this->json(["problem" => $problem]);
+        $webCode = 404;
+        $body = null;
+        if($problem){
+            $webCode = 200;
+            $body = ["problem" => $problem];
+        }
+        return $this->json($body, $webCode);
+
     }
 
 

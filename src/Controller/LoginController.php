@@ -41,11 +41,6 @@ class LoginController extends AbstractController implements ApiController
             'user' => $this->getUser()
         ]);
     }
-    public function logout(){
-        $response = new JsonResponse(['result' => true]);
-        $response->headers->clearCookie("jwt");
-        return $response;
-    }
     public function register(ObjectManager $om, UserPasswordEncoderInterface $passwordEncoder, Request $request){
         $user = new User();
         $email                  = $request->request->get("username");

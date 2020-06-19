@@ -22,7 +22,7 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
-    App\Subscriber\JWTLogoutHandler:
+    App\Security\JWTLogoutHandler:
         tags:
             - name: 'kernel.event_listener'
               event: 'Symfony\Component\Security\Http\Event\LogoutEvent'
