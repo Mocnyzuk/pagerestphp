@@ -41,7 +41,7 @@ class HomeAndRootService
     }
     public function getHomePage() :array{
         $banner = $this->getBanner();
-        $prozasInString = $this->repoService->getProzaRepo()->findOneBy(["name"=>"proza 1"])->getTresc();
+        $prozasInString = $this->repoService->getProzaRepo()->findOneBy(["name"=>"home"])->getTresc();
         $slideshow = $this->repoService->getSlideshowRepo()->findAll()[0];
         $imageArray = $slideshow->getImages();
         $onlySrc = array();
@@ -85,7 +85,7 @@ class HomeAndRootService
     }
     public function getBanner() :array{
         $image = $this->repoService->getImageRepo()->findOneBy(["name"=>"pierwsza strona"]);
-        $tresc = $this->repoService->getProzaRepo()->findOneBy(["name"=>"cytat"]);
+        $tresc = $this->repoService->getProzaRepo()->findOneBy(["name"=>"quote"]);
         $banner = array();
         $banner["name"] = $image->getName();
         $banner["path"] = $image->getPath();
