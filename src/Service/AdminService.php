@@ -93,7 +93,6 @@ class AdminService
             $uslugas = array();
             foreach ($keySet as $key) {
                 $uslugas = array_merge($uslugas, $data[$key]);
-
             }
             foreach ($uslugas as $usluga) {
                 $old = $this->repoService->getUslugaRepo()->find($usluga["id"]);
@@ -116,8 +115,6 @@ class AdminService
                         $image);
                     $old->setZabieg($zabieg);
                 }
-
-
                 $old->setCategory($usluga["category"]);
                 $old->setName(ucfirst($usluga["name"]));
                 $old->setPriceOnce($usluga["priceOnce"]);
@@ -187,7 +184,6 @@ class AdminService
         }
         return true;
     }
-
     private function decodeSlideshow($json):bool
     {
         try {
@@ -211,7 +207,6 @@ class AdminService
         }
         return true;
     }
-
     private function decodeProblem($json):bool
     {
         try{
@@ -239,30 +234,15 @@ class AdminService
 
     private function decodeProza($json):bool
     {
-
-            $data = json_decode($json, true);
-            $query = null;
-            switch ($data["type"]){
-                case "quote":
-                    $query = "cytat";
-                    break;
-                case "omnie":
-                    $query = "omnie";
-                    break;
-                case "home":
-                    $query = "proza 1";
-                    break;
-                case "trichoskopia":
-                    $query = "trichoskopia";
-                    break;
-            }
-            if(!$query){
-                return false;
-            }
-            $old = $this->repoService->getProzaRepo()->findOneBy(["name" => $query]);
+        $data = json_decode($json, true);
+        if(key_exists("type", $data)) {
+            $old = $this->repoService->getProzaRepo()->findOneBy(["name" => $data["type"]]);
             $old->setTresc($data["value"]);
             $this->repoService->getEntityManager()->flush();
-        return true;
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function getMessages(): array
@@ -300,8 +280,7 @@ class AdminService
     {
         $zabiegs = $this->repoService->getZabiegRepo()->findAll();
         $listOfDTO = array();
-        for($i = 0; $i<sizeof($zabiegs);$i++){
-            $zab = $zabiegs[$i];
+        foreach($zabiegs as $zab){
             $listOfDTO[] = ["urlPath" => $zab->getUrlPath(),
                 "name" => $zab->getName()];
         }

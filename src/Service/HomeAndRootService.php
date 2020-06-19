@@ -19,6 +19,12 @@ class HomeAndRootService
         $this->repoService = $repoService;
     }
 
+    private static function getZabiegDTO($zab)
+    {
+        return ["urlPath" => $zab->getUrlPath(),
+                        "name" => $zab->getName()];
+    }
+
     public function getRootPage() :array {
         $logo = $this->repoService->getImageRepo()->findOneBy(["name"=>"transparentLogoSmall"]);
         $kontakt = $this->repoService->getKontaktRepo()->findAll()[0];
@@ -62,38 +68,20 @@ class HomeAndRootService
     }
     public static function getMapByCategoryZabiegOrUslugs($array, bool $short = false): array{
         $zabiegs = $array;
-        $zabiegTrych = array();
-        $zabiegApar = array();
-        $zabiegInny = array();
-        for ($i = 0; $i<sizeof($zabiegs);$i++){
-            $zab = $zabiegs[$i];
-            if($zab->getCategory() === "TRYCHOLOGICZNY"){
-                if($short){
-                    $zabiegTrych[] = ["urlPath" => $zab->getUrlPath(),
-                        "name" => $zab->getName()];
-                }else{
-                    $zabiegTrych[] = $zab;
-                }
-
-            }elseif($zab->getCategory() === "TRYCHOLOGICZNY-APARATUROWY"){
-                if($short){
-                    $zabiegApar[] = ["urlPath" => $zab->getUrlPath(),
-                        "name" => $zab->getName()];
-                }else{
-                    $zabiegApar[] = $zab;
-                }
-            }else{
-                if($short){
-                    $zabiegInny[] = ["urlPath" => $zab->getUrlPath(),
-                        "name" => $zab->getName()];
-                }else{
-                    $zabiegInny[] = $zab;
-                }
+        $result = array();
+        foreach($zabiegs as $zab){
+            $category = $zab->getCategory();
+            $category = ucfirst(mb_strtolower($category));
+            if(!key_exists($category, $result)){
+                $result[$category] = array();
             }
+            if($short){
+                $zab = HomeAndRootService::getZabiegDTO($zab);
+            }
+            $result[$category][] = $zab;
         }
-        return ["Trychologiczny"=>$zabiegTrych,
-            "Trychologiczno-aparaturowy"=>$zabiegApar,
-            "Diagnostyczny"=>$zabiegInny];
+        ksort($result);
+        return $result;
     }
     public function getBanner() :array{
         $image = $this->repoService->getImageRepo()->findOneBy(["name"=>"pierwsza strona"]);

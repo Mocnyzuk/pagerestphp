@@ -162,13 +162,13 @@ class FileReader
                $zabieg
            );
        }
-        $uslugs[] = new Usluga("trychologiczny",
+        $uslugs[] = new Usluga("TRYCHOLOGICZNY",
             mb_strtoupper("Masaż linfatyczny skóry głowy", "UTF-8"),
             80.0, 0.0, null);
-        $uslugs[] = new Usluga("diagnostyczny",
+        $uslugs[] = new Usluga("DIAGNOSTYCZNY",
             "WIZYTA KONTROLNA",
             60.0, 0.0, null);
-        $uslugs[] = new Usluga("diagnostyczny",
+        $uslugs[] = new Usluga("DIAGNOSTYCZNY",
             mb_strtoupper("Badanie skóry głowy trichoskopem + konsultacja trychologiczna", "UTF-8"),
             80.0, 0.0, null);
         return $uslugs;
@@ -230,7 +230,7 @@ class FileReader
     private function getProzas() : array{
         $result = array();
         $proza1 = new Proza();
-        $proza1->setName("proza 1");
+        $proza1->setName("home");
         $proza1->setTresc('<p>Wygląd włos&oacute;w jest odzwierciedleniem zdrowia i kondycji całego organizmu.</p> 
 					<p>Pogorszenie ich stanu, nadmierne wypadanie mogą świadczyć o zaburzeniach wewnątrzustrojowych, niewłaściwie zbilansowanej diecie lub narażeniu na przewlekły stres.</p> 
 					<p>W celu uzyskania poprawy, konieczne jest podjęcie kompleksowych działań. Pierwszym krokiem jest wizyta w gabinecie, kt&oacute;ry powstał z myślą o osobach cierpiących na wszelkiego rodzaju dolegliwości związane z chorobami sk&oacute;ry głowy.</p> <p>Gabinet TRICHODERMEDICA oferuje kompleksowe oraz indywidualne podejście do każdego klienta.</p>
@@ -279,7 +279,7 @@ class FileReader
         trychologiczne oraz dobieram profesjonalne preparaty  w celu uzupełnienia kuracji domowej.
         Ponadto, w ofercie znajdują się zabiegi z zakresu kosmetologii, dotyczące zarówno twarzy jak i ciała.');
         $cytat = new Proza();
-        $cytat->setName("cytat");
+        $cytat->setName("quote");
         $cytat->setTresc('<blockquote><p><strong>Wiedza</strong>, <strong>doświadczenie</strong>
                                                            i <strong>profesjonalizm</strong><br/> pozwolą ci odzyskać
                                                            <strong>zdrowe</strong> <br/> i piękne <strong>włosy</strong>
