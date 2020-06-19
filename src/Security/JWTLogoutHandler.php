@@ -15,13 +15,4 @@ class JWTLogoutHandler
         $event->setResponse($response);
     }
 
-
-
-//    public static function getSubscribedEvents()
-//    {
-//        return[
-//            "security.event_dispatcher.main" => 'onLogoutSuccess'
-//        ];
-//    }
-
 }
