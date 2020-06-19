@@ -11,7 +11,7 @@ class ForwardController extends AbstractController
 {
 
     public function forwardToIndex(): Response{
-        return $this->render("index.html");
+        return $this->forward("App\Controller\RootController::index");
     }
 
 }

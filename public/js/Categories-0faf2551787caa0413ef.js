@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{70:function(e,t,i){"use strict";i.r(t);var n=function(){var e=this.$createElement,t=this._self._c||e;return t("div",[t("router-view",{key:this.$route.fullPath})],1)};n._withStripped=!0;var r={},l=i(0),s=Object(l.a)(r,n,[],!1,null,null,null);s.options.__file="client/src/views/Category.vue";t.default=s.exports}}]);

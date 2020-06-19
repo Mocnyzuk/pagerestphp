@@ -8,7 +8,6 @@ use App\Controller\ApiController;
 use App\Service\AdminService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use function Symfony\Component\String\s;
 
 class AdminController extends AbstractController implements ApiController, AdminChecker
 {
