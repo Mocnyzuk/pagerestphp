@@ -84,6 +84,9 @@
     "firebase/php-jwt": {
         "version": "v5.2.0"
     },
+    "imagine/imagine": {
+        "version": "1.2.3"
+    },
     "ircmaxell/password-compat": {
         "version": "v1.0.4"
     },
@@ -95,6 +98,19 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.4"
+    },
+    "liip/imagine-bundle": {
+        "version": "1.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.8",
+            "ref": "1d42bc3f713130582e6e0c475c49bc327ab0a2a2"
+        },
+        "files": [
+            "./config/packages/liip_imagine.yaml",
+            "./config/routes/liip_imagine.yaml"
+        ]
     },
     "monolog/monolog": {
         "version": "2.1.0"
@@ -436,6 +452,9 @@
         "version": "v5.1.2"
     },
     "symfony/string": {
+        "version": "v5.1.2"
+    },
+    "symfony/templating": {
         "version": "v5.1.2"
     },
     "symfony/test-pack": {
