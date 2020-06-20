@@ -41,44 +41,8 @@ class LoginController extends AbstractController implements ApiController
             'user' => $this->getUser()
         ]);
     }
-    public function register(ObjectManager $om, UserPasswordEncoderInterface $passwordEncoder, Request $request){
-        $user = new User();
-        $email                  = $request->request->get("username");
-        $password               = $request->request->get("password");
-        $passwordConfirmation   = $request->request->get("password_confirmation");
-        $errors = [];
-        if($password != $passwordConfirmation)
-        {
-            $errors[] = "Password does not match the password confirmation.";
-        }
-        if(strlen($password) < 6)
-        {
-            $errors[] = "Password should be at least 6 characters.";
-        }
-        if(!$errors)
-        {
-            $encodedPassword = $passwordEncoder->encodePassword($user, $password);
-            $user->setUsername($email);
-            $user->setPassword($encodedPassword);
-            try
-            {
-                $om->persist($user);
-                $om->flush();
-                return $this->json([
-                    'user' => $user
-                ]);
-            }
-            catch(UniqueConstraintViolationException $e)
-            {
-                $errors[] = "The email provided already has an account!";
-            }
-            catch(\Exception $e)
-            {
-                $errors[] = "Unable to save new user at this time.";
-            }
-        }
-        return $this->json([
-            'errors' => $errors
-        ], 400);
+    public function register(UserPasswordEncoderInterface $passwordEncoder, Request $request){
+        return $this->loginService->register($request, $passwordEncoder);
+
     }
 }
