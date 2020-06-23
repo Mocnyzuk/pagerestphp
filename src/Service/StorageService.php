@@ -6,6 +6,7 @@ namespace App\Service;
 
 use App\Entity\Image;
 use App\Migrations\FileReader;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,7 +39,7 @@ class StorageService
                     $newFilename = $safeFilename.'.'.$f->guessExtension();
                     try {
                         $f->move(
-                            $_SERVER['DOCUMENT_ROOT'] . "/files/".$dirname,
+                            $_SERVER['DOCUMENT_ROOT'] . "/../files/".$dirname,
                             $newFilename
                         );
                         if($dirname === "zdjecia"){
@@ -53,6 +54,12 @@ class StorageService
             $em->flush();
         }
         return true;
+    }
+
+    public function getFile(string $path) : BinaryFileResponse
+    {
+        $url = $_SERVER['DOCUMENT_ROOT'] . '/../files/'.$path;
+        return new BinaryFileResponse($url);
     }
 
 }

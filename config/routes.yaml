@@ -80,10 +80,10 @@ user:
   path: /api/user
   controller: App\Controller\LoginController::user
   methods: GET|HEAD
-#file:
-#  path: /files/{dirname}/{filename}
-#  controller: App\Controller\StorageController::getFile
-#  methods:    GET|HEAD
+file:
+  path: /files/{dirname}/{filename}
+  controller: App\Controller\StorageController::getFile
+  methods:    GET|HEAD
 #POST MAPPINGI + ADMINISTRACYJNE PANELE
 postfile:
   path: /files/uploadfile/{dirname}
