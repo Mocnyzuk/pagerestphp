@@ -33,13 +33,18 @@ class StorageController extends AbstractController
     public function postFile(string $dirname, Request $request){
         return $this->json($this->storageService->handlePostFile($dirname, $request));
     }
-    public function getFile($dirname, $filename){
+    public function getFile($dirname, $filename, Request $request){
         $url = $dirname."/".$filename;
         $binaryFileResponse = $this->storageService->getFile($url);
+        $binaryFileResponse->setEtag(md5($binaryFileResponse->getContent()));
         $binaryFileResponse->setPublic();
-        $binaryFileResponse->setMaxAge(24 * 3600);
+        $binaryFileResponse->setMaxAge(300);
         $binaryFileResponse->headers->addCacheControlDirective("must-revalidate", true);
         $binaryFileResponse->headers->addCacheControlDirective("no-transform", true);
+//        $binaryFileResponse->headers->set("Vary", "Origin");
+//        $binaryFileResponse->headers->set("Vary", "Access-Control-Request-Method");
+//        $binaryFileResponse->headers->set("Vary", "Access-Control-Request-Headers");
+        $binaryFileResponse->isNotModified($request);
         return $binaryFileResponse;
     }
 }
