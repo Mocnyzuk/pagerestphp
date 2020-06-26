@@ -41,7 +41,13 @@ class StorageController extends AbstractController
         $binaryFileResponse->setMaxAge(3600);
         //$binaryFileResponse->headers->addCacheControlDirective("must-revalidate", true);
         $binaryFileResponse->headers->addCacheControlDirective("no-transform", true);
-        $binaryFileResponse->isNotModified($request);
+        $check = $binaryFileResponse->isNotModified($request);
+        if($check){
+            $binaryFileResponse->headers->set("Vary",
+                ["Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers"]);
+//            $binaryFileResponse->headers->set("Vary", );
+//            $binaryFileResponse->headers->set("Vary", );
+        }
 
         return $binaryFileResponse;
     }
