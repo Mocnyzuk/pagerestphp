@@ -38,13 +38,11 @@ class StorageController extends AbstractController
         $binaryFileResponse = $this->storageService->getFile($url);
         $binaryFileResponse->setEtag(md5($binaryFileResponse->getContent()));
         $binaryFileResponse->setPublic();
-        $binaryFileResponse->setMaxAge(300);
+        $binaryFileResponse->setMaxAge(24 * 3600);
         $binaryFileResponse->headers->addCacheControlDirective("must-revalidate", true);
         $binaryFileResponse->headers->addCacheControlDirective("no-transform", true);
-//        $binaryFileResponse->headers->set("Vary", "Origin");
-//        $binaryFileResponse->headers->set("Vary", "Access-Control-Request-Method");
-//        $binaryFileResponse->headers->set("Vary", "Access-Control-Request-Headers");
-        $binaryFileResponse->isNotModified($request);
+        $check = $binaryFileResponse->isNotModified($request);
+
         return $binaryFileResponse;
     }
 }
